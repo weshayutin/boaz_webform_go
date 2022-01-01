@@ -44,7 +44,7 @@ func (msg *Message) Validate() bool {
 	}
 
 	if strings.TrimSpace(msg.DateTime) == "" {
-		msg.Errors["Name"] = "Please enter the date and time of pickup"
+		msg.Errors["DateTime"] = "Please enter the date and time of pickup"
 	}
 
 	if strings.TrimSpace(msg.Restaurant) == "" {
@@ -52,10 +52,13 @@ func (msg *Message) Validate() bool {
 	}
 
 	if strings.TrimSpace(msg.Content) == "" {
-		msg.Errors["Content"] = "Please enter a message"
+		msg.Errors["Content"] = "Please enter details about your order"
 	}
 
 	matchPhone := rxPhone.Match([]byte(msg.Phone))
+	if strings.TrimSpace(msg.Phone) == "" {
+		msg.Errors["Phone"] = "Please enter your phone number"
+	}
 	if matchPhone == false {
 		msg.Errors["Phone"] = "Please enter a valid phone number"
 	}

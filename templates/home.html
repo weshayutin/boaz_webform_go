@@ -1,36 +1,36 @@
 <style type="text/css">.error {color: red;}</style>
+<link rel="stylesheet" href="css/styles.css">
 
-<img src="images/boazbf.png" alt="foo" width="1000" height="500">
+<img src="images/boazbf.png" class="center" type="top_pic" alt="boazpic" width="1000" height="500">
 
-<h1>Pick Up Details</h1>
 <form action="/" method="POST" novalidate>
 	<div>
 		{{ with .Errors.Name }}
 		<p class="error">{{ . }}</p>
 		{{ end }}
-		<p><label>Your Name:</label></p>
-		<p><input type="name" name="name" value="{{ .Name }}"></p>
+		<p><label class="col-25" type="label">Your Name:</label>
+		<input class="col-75" type="text" name="name" value="{{ .Name }}"></p>
 	</div>
 	<div>
 		{{ with .Errors.Phone }}
 		<p class="error">{{ . }}</p>
 		{{ end }}
-		<p><label>Your Phone Number:</label></p>
-		<p><input type="phone" name="phone" value="{{ .Phone }}"></p>
+		<p><label class="col-25">Your Phone Number:</label>
+		<input class="col-75" type="text" name="phone" value="{{ .Phone }}"></p>
 	</div>
 	<div>
 		{{ with .Errors.Email }}
 		<p class="error">{{ . }}</p>
 		{{ end }}
-		<p><label>Your email:</label></p>
-		<p><input type="email" name="email" value="{{ .Email }}"></p>
+		<p><label class="col-25">Your email:</label>
+		<input class="col-75" type="text" name="email" value="{{ .Email }}"></p>
 	</div>
 	<div>
 		{{ with .Errors.Restaurant }}
 		<p class="error">{{ . }}</p>
 		{{ end }}
-		<p><label>The Restaurant Name:</label></p>
-		<p><select type="restaurant" name="restaurant" value="{{ .Restaurant }}">
+		<p><label class="col-25">The Restaurant Name:</label>
+		<select  class="col-75" type="text" name="restaurant" value="{{ .Restaurant }}">
 			<option value="">Please choose an option</option>
 			<option value="King Soupers">King Soupers MLK</option>
 			<option value="Annette">Annette</option>
@@ -62,17 +62,17 @@
 		{{ with .Errors.DateTime }}
 		<p class="error">{{ . }}</p>
 		{{ end }}
-		<p><label>Date and Time of Pickup:</label></p>
-		<p><input type="datetime-local" name="datetime" value="{{ .DateTime }}"></p>
+		<p><label class="col-25">Date and Time of Pickup:</label>
+		<input  class="col-75" type="datetime-local" name="datetime" value="{{ .DateTime }}"></p>
 	</div>
 	<div>
 		{{ with .Errors.Content }}
 		<p class="error" >{{ . }}</p>
 		{{ end }}
-		<p><label>Order Details:</label></p>
-		<p><textarea name="content">{{ .Content }}</textarea></p>
+		<p><label class="col-25">Order Details:</label>
+		<textarea class="col-75" type="textarea" name="content">{{ .Content }}</textarea></p>
 	</div>
 	<div>
-		<input type="submit" value="Send message">
+		<input  class="center" type="submit" value="Send Delivery Order">
 	</div>
 </form>

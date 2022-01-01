@@ -14,6 +14,8 @@ func main() {
 	//serve the images first
 	mux.Get("/images/", http.StripPrefix("/images/",
 		http.FileServer(http.Dir("images"))))
+	mux.Get("/css/", http.StripPrefix("/css/",
+		http.FileServer(http.Dir("css"))))
 	mux.Get("/", http.HandlerFunc(home))
 	mux.Post("/", http.HandlerFunc(send))
 	mux.Get("/confirmation", http.HandlerFunc(confirmation))
