@@ -9,7 +9,11 @@ import (
 )
 
 func main() {
+
 	mux := pat.New()
+	//serve the images first
+	mux.Get("/images/", http.StripPrefix("/images/",
+		http.FileServer(http.Dir("images"))))
 	mux.Get("/", http.HandlerFunc(home))
 	mux.Post("/", http.HandlerFunc(send))
 	mux.Get("/confirmation", http.HandlerFunc(confirmation))
@@ -21,8 +25,11 @@ func main() {
 	}
 }
 
-func home(w http.ResponseWriter, r *http.Request) {
+func images(w http.ResponseWriter, r *http.Request) {
+	http.ServeFile(w, r, "./images/")
+}
 
+func home(w http.ResponseWriter, r *http.Request) {
 	render(w, "templates/home.html", nil)
 }
 

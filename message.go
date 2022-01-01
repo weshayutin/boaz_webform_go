@@ -74,3 +74,25 @@ func (msg *Message) Deliver() error {
 
 	return mail.NewDialer("smtp.gmail.com", 465, username, password).DialAndSend(email)
 }
+
+func (msg *Message) Deliver_Receipt() error {
+	this_msg := "\n" +
+		"Name: " + msg.Name + "\n" +
+		"DateTime: " + msg.DateTime + "\n" +
+		"Phone: " + msg.Phone + "\n" +
+		"Email: " + msg.Email + "\n" +
+		"Restaurant: " + msg.Restaurant + "\n" +
+		"Content: " + msg.Content
+
+	email := mail.NewMessage()
+	email.SetHeader("To", msg.Email)
+	email.SetHeader("From", os.Getenv("boazform_from"))
+	email.SetHeader("Reply-To", msg.Email)
+	email.SetHeader("Subject", "New message via Contact Form")
+	email.SetBody("text/plain", this_msg)
+
+	username := os.Getenv("boazform_username")
+	password := os.Getenv("boazform_password")
+
+	return mail.NewDialer("smtp.gmail.com", 465, username, password).DialAndSend(email)
+}
