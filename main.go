@@ -53,12 +53,20 @@ func send(w http.ResponseWriter, r *http.Request) {
 	// Step 2: Send contact form message in an email
 	if err := msg.Deliver(); err != nil {
 		log.Println(err)
+		log.Println("sent email to delivery boy")
+		http.Error(w, "Sorry, something went wrong", http.StatusInternalServerError)
+		return
+	}
+
+	if err := msg.Deliver_Receipt(); err != nil {
+		log.Println(err)
 		http.Error(w, "Sorry, something went wrong", http.StatusInternalServerError)
 		return
 	}
 
 	// Step 3: Redirect to confirmation page
-	http.Redirect(w, r, "/confirmation", http.StatusSeeOther)
+	//http.Redirect(w, r, "/confirmation", http.StatusSeeOther)
+	render(w, "templates/confirmation.html", msg)
 }
 
 func confirmation(w http.ResponseWriter, r *http.Request) {

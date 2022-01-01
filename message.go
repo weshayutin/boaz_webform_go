@@ -76,7 +76,10 @@ func (msg *Message) Deliver() error {
 }
 
 func (msg *Message) Deliver_Receipt() error {
-	this_msg := "\n" +
+	this_msg := "Thank you for your delivery order, we will contact you shortly " +
+		"with an update.  The following are the details of your delivery " +
+		"order.\n"
+	this_msg = this_msg + "\n" +
 		"Name: " + msg.Name + "\n" +
 		"DateTime: " + msg.DateTime + "\n" +
 		"Phone: " + msg.Phone + "\n" +
@@ -87,8 +90,8 @@ func (msg *Message) Deliver_Receipt() error {
 	email := mail.NewMessage()
 	email.SetHeader("To", msg.Email)
 	email.SetHeader("From", os.Getenv("boazform_from"))
-	email.SetHeader("Reply-To", msg.Email)
-	email.SetHeader("Subject", "New message via Contact Form")
+	//email.SetHeader("Reply-To", msg.Email)
+	email.SetHeader("Subject", "Thank you for your business!")
 	email.SetBody("text/plain", this_msg)
 
 	username := os.Getenv("boazform_username")
