@@ -30,7 +30,33 @@
 		<p class="error">{{ . }}</p>
 		{{ end }}
 		<p><label>The Restaurant Name:</label></p>
-		<p><input type="restaurant" name="restaurant" value="{{ .Restaurant }}"></p>
+		<p><select type="restaurant" name="restaurant" value="{{ .Restaurant }}">
+			<option value="">Please choose an option</option>
+			<option value="King Soupers">King Soupers MLK</option>
+			<option value="Annette">Annette</option>
+			<option value="Cattivella">Cattivella</option>
+   			<option value="Cheluna">Cheluna</option>
+			<option value="Cholon">Cholon</option>
+			<option value="ChiLin">Chi Lin / Qi-Lin</option>
+			<option value="Chook">Chook</option>
+			<option value="Churreria">Churreria De Madrid</option>
+			<option value="Comida">Comida</option>
+			<opiton value="Constellation">Constellation Ice Cream</opiton>
+			<option value="DBC">Denver Biscuit Co.</option>
+			<option value="HashTag">Hash Tag</option>
+			<option value="Logan">Logan House Coffee</option>
+			<option value="Los Chingones">Los Chingones</option>
+			<option value="MariaEmpanada">Maria Empanada</option>
+			<option value="Miette">Miette Et Chocolat</option>
+			<option value="Misaki">Misaki Sushi</option>
+			<option value="Mondo">Mondo Market</option>
+			<option value="NextDoor">Next Door</option>
+			<option value="RollingSmoke">Rolling Smoke BBQ</option>
+			<option value="Rosenbergs">Rosenberg's Bagels</option>
+			<option value="StanleyBeerHall">Stanley Beer Hall</option>
+			<option value="SweetCow">Sweet Cow</option>
+
+		</select></p>
 	</div>
 	<div>
 		{{ with .Errors.DateTime }}

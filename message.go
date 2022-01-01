@@ -11,6 +11,16 @@ import (
 var rxEmail = regexp.MustCompile(".+@.+\\..+")
 var rxPhone = regexp.MustCompile(`^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$`)
 
+// type DropdownItem struct {
+// 	Name  string
+// 	Value string
+// }
+
+// var fruits = map[string]interface{}{
+// 	"Annette": "Annette",
+// 	"Cheluna": "Cheluna",
+// }
+
 type Message struct {
 	Name       string
 	DateTime   string
