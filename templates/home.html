@@ -20,6 +20,20 @@
 		<input class="col-75" type="text" name="phone" value="{{ .Phone }}"></p>
 	</div>
 	<div>
+		{{ with .Errors.Address }}
+		<p class="error">{{ . }}</p>
+		{{ end }}
+		<p><label class="col-25">Your Delivery Address:</label>
+		<input class="col-75" type="text" name="address" value="{{ .Address }}"></p>
+	</div>
+    <div>
+		{{ with .Errors.BusyKidNum }}
+		<p class="error">{{ . }}</p>
+		{{ end }}
+		<p><label class="col-25">BusyKid Payment Cofirmation Number:</label>
+		<input class="col-75" type="text" name="busykidnum" value="{{ .BusyKidNum }}"></p>
+	</div>
+	<div>
 		{{ with .Errors.Email }}
 		<p class="error">{{ . }}</p>
 		{{ end }}

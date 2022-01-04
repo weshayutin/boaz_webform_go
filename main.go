@@ -40,6 +40,8 @@ func send(w http.ResponseWriter, r *http.Request) {
 	msg := &Message{
 		Name:       r.PostFormValue("name"),
 		Phone:      r.PostFormValue("phone"),
+		Address:    r.PostFormValue("address"),
+		BusyKidNum: r.PostFormValue("busykidnum"),
 		Email:      r.PostFormValue("email"),
 		Restaurant: r.PostFormValue("restaurant"),
 		DateTime:   r.PostFormValue("datetime"),

@@ -10,6 +10,7 @@ import (
 
 var rxEmail = regexp.MustCompile(".+@.+\\..+")
 var rxPhone = regexp.MustCompile(`^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$`)
+var rxBusyKid = regexp.MustCompile(`^1\d\d\d\d\d\d\d`)
 
 // type DropdownItem struct {
 // 	Name  string
@@ -25,6 +26,8 @@ type Message struct {
 	Name       string
 	DateTime   string
 	Phone      string
+	Address    string
+	BusyKidNum string
 	Email      string
 	Restaurant string
 	Content    string
@@ -41,6 +44,19 @@ func (msg *Message) Validate() bool {
 
 	if strings.TrimSpace(msg.Name) == "" {
 		msg.Errors["Name"] = "Please enter your name"
+	}
+
+	if strings.TrimSpace(msg.Address) == "" {
+		msg.Errors["Name"] = "Please enter your Address"
+	}
+
+	if strings.TrimSpace(msg.BusyKidNum) == "" {
+		msg.Errors["Name"] = "Please enter the Busy Kid Payment Confirmation Number"
+	}
+
+	matchBusyKid := rxBusyKid.Match([]byte(msg.BusyKidNum))
+	if matchBusyKid == false {
+		msg.Errors["BusyKidNum"] = "Please enter a valid BusyKid Conformation Number"
 	}
 
 	if strings.TrimSpace(msg.DateTime) == "" {
