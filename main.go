@@ -21,7 +21,7 @@ func main() {
 	mux.Get("/confirmation", http.HandlerFunc(confirmation))
 
 	log.Println("Listening...")
-	err := http.ListenAndServe(":8081", mux)
+	err := http.ListenAndServe(":8080", mux)
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -47,11 +47,11 @@ func (msg *Message) Validate() bool {
 	}
 
 	if strings.TrimSpace(msg.Address) == "" {
-		msg.Errors["Name"] = "Please enter your Address"
+		msg.Errors["Address"] = "Please enter your Address"
 	}
 
 	if strings.TrimSpace(msg.BusyKidNum) == "" {
-		msg.Errors["Name"] = "Please enter the Busy Kid Payment Confirmation Number"
+		msg.Errors["BusyKidNum"] = "Please enter the Busy Kid Payment Confirmation Number"
 	}
 
 	matchBusyKid := rxBusyKid.Match([]byte(msg.BusyKidNum))
