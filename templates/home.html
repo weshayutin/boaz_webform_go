@@ -1,6 +1,7 @@
 <style type="text/css">.error {color: red;}</style>
 <link rel="stylesheet" href="css/styles.css">
 
+<div class="bottomAnim"></div>
 <img src="images/boazbf.png" class="center" type="top_pic" alt="boazpic" width="1000" height="500">
 
 <form action="/" method="POST" novalidate>
@@ -30,7 +31,7 @@
 		<p class="error">{{ . }}</p>
 		{{ end }}
 		<p><label class="col-25">The Restaurant Name:</label>
-		<select  class="col-75" type="text" name="restaurant" value="{{ .Restaurant }}">
+		<select  class="col-74" type="select" name="restaurant" value="{{ .Restaurant }}">
 			<option value="">Please choose an option</option>
 			<option value="King Soupers">King Soupers MLK</option>
 			<option value="Annette">Annette</option>
@@ -63,14 +64,14 @@
 		<p class="error">{{ . }}</p>
 		{{ end }}
 		<p><label class="col-25">Date and Time of Pickup:</label>
-		<input  class="col-75" type="datetime-local" name="datetime" value="{{ .DateTime }}"></p>
+		<input  class="col-74" type="datetime-local" name="datetime" value="{{ .DateTime }}"></p>
 	</div>
 	<div>
 		{{ with .Errors.Content }}
 		<p class="error" >{{ . }}</p>
 		{{ end }}
 		<p><label class="col-25">Order Details:</label>
-		<textarea class="col-75" type="textarea" name="content">{{ .Content }}</textarea></p>
+		<textarea class="col-74" type="textarea" name="content">{{ .Content }}</textarea></p>
 	</div>
 	<div>
 		<input  class="center" type="submit" value="Send Delivery Order">
