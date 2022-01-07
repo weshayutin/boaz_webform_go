@@ -9,7 +9,7 @@ import (
 )
 
 var rxEmail = regexp.MustCompile(".+@.+\\..+")
-var rxPhone = regexp.MustCompile(`^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[\-\.\ \\\/]?)?((?:\(?\d{1,}\)?[\-\.\ \\\/]?){0,})(?:[\-\.\ \\\/]?(?:#|ext\.?|extension|x)[\-\.\ \\\/]?(\d+))?$`)
+var rxPhone = regexp.MustCompile(`((?:\D|^)\d{10})`)
 var rxBusyKid = regexp.MustCompile(`^1\d\d\d\d\d\d\d`)
 
 // type DropdownItem struct {
@@ -56,7 +56,7 @@ func (msg *Message) Validate() bool {
 
 	matchBusyKid := rxBusyKid.Match([]byte(msg.BusyKidNum))
 	if matchBusyKid == false {
-		msg.Errors["BusyKidNum"] = "Please enter a valid BusyKid Conformation Number"
+		msg.Errors["BusyKidNum"] = "Please enter a valid BusyKid Confirmation Number"
 	}
 
 	if strings.TrimSpace(msg.DateTime) == "" {
